@@ -2,27 +2,37 @@ import React from "react";
 import s from './Dialogs.module.css';
 import {NavLink} from "react-router-dom";
 
+const DialogItem = (props) => {
+    let path = "/dialogs/" + props.id;
+    return <div className={s.dialog + ' ' + s.active}>
+        <NavLink to={path}>{props.name}</NavLink>
+    </div>
+}
+
+const Message = (props) => {
+    return <div className={s.dialog}>{props.message}</div>
+}
+
 const Dialogs = (props) => {
     return <div className={s.dialogs}>
         <div className={s.dialogsItems}>
-            <div className={s.dialog + ' ' + s.active}>
-                <NavLink to="/dialogs/1">Platon</NavLink>
+            <div>
+                <DialogItem name="Platon" id="1"/>
             </div>
             <div className={s.dialog}>
-                <NavLink to="/dialogs/2">Alexey</NavLink>
+                <DialogItem name="Iona" id="2"/>
             </div>
             <div className={s.dialog}>
-                <NavLink to="/dialogs/3">Father</NavLink>
+                <DialogItem name="Dmitry Petrov" id="3"/>
             </div>
             <div className={s.dialog}>
-                <NavLink to="/dialogs/4">Gleb</NavLink>
+                <DialogItem name="Gleb" id="4"/>
             </div>
         </div>
         <div className={s.messages}>
-            <div className={s.message}>Hello</div>
-            <div className={s.message}>How is your domashka po reaktu?</div>
-            <div className={s.message}>Nado testit</div>
-
+            <Message message="Hi"/>
+            <Message message="How is your domashka po reactu?"/>
+            <Message message="Nado testit"/>
         </div>
     </div>
 }
